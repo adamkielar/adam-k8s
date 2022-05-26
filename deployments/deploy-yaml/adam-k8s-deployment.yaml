@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adam-k8s-deployment
+  labels:
+    app: adam-k8s-app
+    group: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: adam-k8s-app
+  template:
+    metadata:
+      labels:
+        app: adam-k8s-app
+    spec:
+      containers:
+        - image: poznajkubernetes/pkad
+          imagePullPolicy: Always
+          name: app
+          ports:
+          - containerPort:  8080
+            name:  app-port
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

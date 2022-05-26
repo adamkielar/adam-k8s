@@ -1,0 +1,14 @@
+app:
+  name: adam-k8s-app
+  group: backend
+  replicas: 2
+  container:
+   image: poznajkubernetes/pkad
+   port: 8080
+   imagePullPolicy: Always
+  service:
+   name: adam-k8s-service
+   type: ClusterIP
+   port: 80
+  ingress:
+   host: adam-k8s.k8s-staging.devguru.co
